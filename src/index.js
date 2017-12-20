@@ -1,7 +1,7 @@
 const config = require('../config.json')
 
 const MongoClient = require('mongodb').MongoClient
-const mws = require('amazon-mws')(config.ACCESS_KEY, config.SECRET_KEY)
+const mws = require('amazon-mws')(config.AWS_ACCESS_KEY, config.MWS_SECRET_KEY)
 
 const INVENTORY_REPORT = '_GET_AFN_INVENTORY_DATA_BY_COUNTRY_'
 const SHIPMENTS_REPORT = '_GET_AMAZON_FULFILLED_SHIPMENTS_DATA_'
@@ -9,7 +9,7 @@ const ORDERS_REPORT = '_GET_FLAT_FILE_ALL_ORDERS_DATA_BY_ORDER_DATE_'
 const RESERVED_REPORT = '_GET_RESERVED_INVENTORY_DATA_'
 
 async function recordAllReports() {
-   const client = await MongoClient.connect(MONGODB_URI)
+   const client = await MongoClient.connect(config.MONGODB_URI)
    const db = client.db(config.MONGODB_DATABASE)
 
    const inventory = await getReport(INVENTORY_REPORT)
@@ -56,7 +56,7 @@ function getReportListConfig(reportType) {
    return {
         Version: '2009-01-01',
         Action: 'GetReportList',
-        SellerId: SELLERID,
+        SellerId: config.MWS_SELLERID,
         'ReportTypeList.Type.1': reportType
    }
 }
@@ -68,7 +68,7 @@ function getReportConfig(reportId) {
    return {
         Version: '2009-01-01',
         Action: 'GetReport',
-        SellerId: SELLERID,
+        SellerId: config.MWS_SELLERID,
         ReportId: reportId
    }
 }

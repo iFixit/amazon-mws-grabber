@@ -5,7 +5,7 @@ shipments, orders, and reserved products.
 
 ### Config
 
-Configuration varibles go in `config.js`. This contains configuration necessary
+Configuration varibles go in `config.json`. This contains configuration necessary
 for connecting to Amazon MWS and a given MongoDB instance.
 
-An example config called `config.example.js` is provided.
+An example config called `config.example.json` is provided.

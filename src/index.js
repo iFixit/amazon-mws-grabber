@@ -12,35 +12,19 @@ async function recordAllReports() {
    const client = await MongoClient.connect(MONGODB_URI)
    const db = client.db(config.MONGODB_DATABASE)
 
-   const inventory = await getInventoryReport()
+   const inventory = await getReport(INVENTORY_REPORT)
    db.collection('amazon_inventory').save(inventory)
 
-   const shipments = await getShipmentsReport()
+   const shipments = await getReport(SHIPMENTS_REPORT)
    db.collection('amazon_shipments').save(shipments)
 
-   const orders = await getOrdersReport()
+   const orders = await getReport(ORDERS_REPORT)
    db.collection('amazon_orders').save(orders)
 
-   const reserved = await getReservedReport()
+   const reserved = await getReport(RESERVED_REPORT)
    db.collection('amazon_reserved').save(reserved)
 
    client.close()
-}
-
-function getInventoryReport() {
-   return getReport(INVENTORY_REPORT)
-}
-
-function getShipmentsReport() {
-   return getReport(SHIPMENTS_REPORT)
-}
-
-function getOrdersReport() {
-   return getReport(ORDERS_REPORT)
-}
-
-function getReservedReport() {
-   return getReport(RESERVED_REPORT)
 }
 
 /**

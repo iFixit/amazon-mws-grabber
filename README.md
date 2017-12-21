@@ -5,7 +5,15 @@ shipments, orders, and reserved products.
 
 ### Config
 
-Configuration varibles go in `config.json`. This contains configuration necessary
-for connecting to Amazon MWS and a given MongoDB instance.
+Configuration is handled through environment variables. They expected
+environment variables are:
 
-An example config called `config.example.json` is provided.
+`AWS_ACCESS_KEY`: Your AWS access key that's used to authenticate with Amazon MWS.
+
+`MWS_SECRET_KEY`: The secret key specified by Amazon MWS.
+
+`MWS_SELLERID`: The sellerid used when authenticating with Amazon MWS.
+
+`MONGODB_URI`: The connection string to connect to MongoDB.
+
+`MONGODB_DATABASE`: The name of the database to place documents in.

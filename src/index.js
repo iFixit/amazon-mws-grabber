@@ -17,16 +17,16 @@ async function recordAllReports() {
    const db = client.db(MONGODB_DATABASE)
 
    const inventory = await getReport(INVENTORY_REPORT)
-   db.collection('amazon_inventory').save(inventory)
+   db.collection('amazon_inventory_reports').save(inventory)
 
    const shipments = await getReport(SHIPMENTS_REPORT)
-   db.collection('amazon_shipments').save(shipments)
+   db.collection('amazon_shipment_reports').save(shipments)
 
    const orders = await getReport(ORDERS_REPORT)
-   db.collection('amazon_orders').save(orders)
+   db.collection('amazon_order_reports').save(orders)
 
    const reserved = await getReport(RESERVED_REPORT)
-   db.collection('amazon_reserved').save(reserved)
+   db.collection('amazon_reserved_reports').save(reserved)
 
    client.close()
 }

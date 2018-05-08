@@ -9,7 +9,7 @@
   "author": "Chris Opperwall",
   "license": "MIT",
   "dependencies": {
-    "amazon-mws": "0.0.13",
+    "amazon-mws": "0.0.15",
     "mongodb": "^3.0.0-rc0"
   }
 }

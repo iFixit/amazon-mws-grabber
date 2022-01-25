@@ -1,5 +1,7 @@
 # Amazon Reports Grabber
 
+DEPRECATED in favor of https://github.com/iFixit/amazon-mws-analytics
+
 This is used to grab the most recent Amazon MWS reports for inventory,
 shipments, orders, and reserved products.
 
